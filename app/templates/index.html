@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+  <br>
+
+    <form  action="" method="post" role="form" name="idea">
+        {{ form.hidden_tag() }}
+        <input type="hidden" name="csrf_token" value="{form.csrf_token() }"/>
+        {{ form.csrf }}
+        <div class="form-group">
+            <input type="text" class="form-control" id="idea" name="idea" placeholder="We should learn about blue elephants.">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Submit your idea</button>
+    </form>
+    <br>
+      
+    <h4>You could also vote for other people's ideas. Or your own.</h4><i>
+        <meta name="csrf-token" content="{ form.csrf_token() }">
+    
+        {% for idea in ideas %}
+        <div class="alert alert-info ideas" role="alert">
+          {{ idea.text }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="vote" id="{{ idea.id }}">
+            <i class="far fa-thumbs-up" id="up"></i><span id="sup"> Up {{ idea.upvotes }}</span></a>
+            &nbsp;&nbsp;
+          <a class="vote" id="{{ idea.id }}">
+            <i class="far fa-thumbs-down" id="down"></i><span id="sdown"> Down {{ idea.downvotes }}</span></a>
+          <br />
+          <!-- alert div -->
+        </div>
+        {% endfor %}
+
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='vote.js') }}"></script>
+{% endblock %}

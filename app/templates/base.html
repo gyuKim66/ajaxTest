@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}Document{% endblock %}</title>
+
+
+	<!-- Boxicons CSS -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}"> 
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> 
+	{% block style %}{% endblock %}
+</head>
+
+<body>
+	
+	{#	<!-- <header class="headerBar">
+		<h1>Testing</h1>
+	</header> -->
+	#}
+
+	  
+	{% block content %} {% endblock %}
+
+
+
+
+
+	<!-- Script -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	</script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+	{% block script %}
+	{% endblock %}
+</body>
+</html>
